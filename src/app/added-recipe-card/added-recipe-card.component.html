@@ -1,9 +1,9 @@
-<div class="container" style="margin-top: 25px;" *ngIf="recipes.length >= 0 else getZeroRecipe">
-    <div class="row">
-        <div class="col-sm-4" *ngFor="let recipe of recipes">
-            <div class="card caedDiv">
+<div class="container" style="margin-top: 25px;">
+    <div class="row" style="vertical-align: middle;" *ngIf="recipes.length > 0 ;else getZeroRecipe">
+        <div class="col-sm-4 geek" *ngFor="let recipe of recipes">
+            <div class="card cardDiv cardpadding">
                 <h5>
-                    Name:{{recipe.name}}
+                    👨🏻‍🍳 Name:{{recipe.name}}
                 </h5>
 
                 <h6>
@@ -14,25 +14,29 @@
                 <div *ngIf="recipe.type === 'Veg' else elseBlock">
                     <img src="./assets/veg.png" height="25px" width="25px">
                     <label style="color: darkgreen;">
-                        {{recipe.type}}
+                        &nbsp;&nbsp;{{recipe.type}}
                     </label>
                 </div>
                 <ng-template #elseBlock>
                     <div>
                         <img src="./assets/non-veg.png" height="30px" width="30px">
                         <label style="color: darkred;">
-                            {{recipe.type}}
+                            &nbsp;{{recipe.type}}
                         </label>
                     </div>
                 </ng-template>
                 <p style="padding-right: 0px; align-items: center;">
-                    <br>1. For baklava: In small bowl, combine toasted pistachios, cinnamon and sugar and toss to mix
-                    evenly.
+                    <br>{{recipe.description}}
                 </p>
             </div>
         </div>
     </div>
+    <ng-template #getZeroRecipe>
+        <div class="col-sm-6" style=" background-color: brown;">
+            <div>
+                <img src="./assets/reciepenotfound.jpg" height="100%" width="100%">
+            </div>
+
+        </div>
+    </ng-template>
 </div>
-<ng-template #getZeroRecipe>
-    <label>Hellloooooooo</label>
-</ng-template>

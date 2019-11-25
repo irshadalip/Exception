@@ -7,7 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class AddedRecipeCardComponent implements OnInit {
   @Input() recipes = []
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
   }

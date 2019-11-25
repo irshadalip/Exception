@@ -12,14 +12,15 @@ export class AddRecipeFormComponent implements OnInit {
     name: String,
       chef: String,
       image: String,
-      type: String
+      type: String,
+      description: String,
   }
-  @Output() addRecipe = new EventEmitter<{name: String,chef: String,image: String,type: String}>();
+  @Output() addRecipe = new EventEmitter<{name: String,chef: String,image: String,type: String,description: String}>();
   constructor() { }
 
   ngOnInit() {
   }
-  onClickAddRecipe(name: String,chef: String,image: String,type: String){
-    this.addRecipe.emit({name: name,chef: chef,image: image,type: type});
+  onClickAddRecipe(name: String,chef: String,image: String,type: String,description: String){
+    this.addRecipe.emit({name: name,chef: chef,image: image,type: type,description:description});
   }
 }
