@@ -1,7 +1,7 @@
 <div class="container" style="margin-top: 25px;">
     <div class="row" style="vertical-align: middle;" *ngIf="recipes.length > 0 ;else getZeroRecipe">
-        <div class="col-sm-4 geek" *ngFor="let recipe of recipes">
-            <div class="card cardDiv cardpadding">
+        <div class="col-sm-4" *ngFor="let recipe of recipes">
+            <div class="card cardDiv" mouseOver>
                 <h5>
                     👨🏻‍🍳 Name:{{recipe.name}}
                 </h5>
@@ -32,11 +32,8 @@
         </div>
     </div>
     <ng-template #getZeroRecipe>
-        <div class="col-sm-6" style=" background-color: brown;">
-            <div>
-                <img src="./assets/reciepenotfound.jpg" height="100%" width="100%">
-            </div>
-
+        <div class="row d-flex justify-content-center notFoundDiv" style="vertical-align: middle;">
+            <img src="./assets/recipeNotFound.png" style="vertical-align: middle;" height="50%" width="50%">
         </div>
     </ng-template>
 </div>
