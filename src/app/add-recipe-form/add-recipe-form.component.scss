@@ -2,9 +2,9 @@
   background-color: #e9f8ea;
   color: #1c6e34a9;
 }
-button[type=button] {
-  width: 100%;
-  background-color: #4CAF50;
+button[type="button"] {
+  width: 25%;
+  background-color: orangered;
   color: white;
   padding: 14px 20px;
   margin: 8px 0;
@@ -13,7 +13,7 @@ button[type=button] {
   cursor: pointer;
 }
 
-input[type=text] {
+input[type="text"] {
   width: 100%;
   padding: 10px 20px;
   margin: 8px 0;
@@ -26,8 +26,10 @@ input[type=text] {
 }
 .headingDiv {
   border-radius: 10px;
-  background-color: #b0ffc19c;
+  background-color: #4caf50;
   padding: 0px;
+  width: max-content;
+  height: 250px;
   text-align: center;
   color: rgb(255, 255, 255);
   font-family: "Times New Roman", Times, serif;
@@ -35,7 +37,11 @@ input[type=text] {
 .formDiv {
   width: 90%;
   border-radius: 10px;
-  background-color: #f2f2f2;
+  background-color: #ffffff;
   color: rgb(124, 124, 124);
   font-family: Trebuchet MS, Helvetica, sans-serif;
+}
+div.image {
+  width: 100%;
+  content: url(https://images.wallpaperscraft.com/image/pizza_basil_cheese_tomato_paste_109592_1920x1080.jpg);
 }

@@ -1,32 +1,38 @@
 <div class="container" style="margin-top: 25px;">
+    <div class="justify-content-center" style="margin-bottom: 5px;">
+        <h1>
+            List Of Recipes
+        </h1>
+    </div>
     <div class="row" style="vertical-align: middle;" *ngIf="recipes.length > 0 ;else getZeroRecipe">
-        <div class="col-sm-4" *ngFor="let recipe of recipes">
-            <div class="card cardDiv" mouseOver>
-                <h5>
-                    👨🏻‍🍳 Name:{{recipe.name}}
-                </h5>
+        <div class="col-sm-4" *ngFor="let recipe of recipes" style="margin-top: 15px;">
+            <div class="card cardDiv" mouseOver style="padding: 15px;">
 
-                <h6>
-                    <i class="fa fa-user-secret" style="font-size:20px;color:rgb(175, 76, 76)"></i>
-                    Chef: {{recipe.chef}}
-                </h6>
+                <h3>
+                    <img class="img-fluid" src="{{recipe.image}}" class="img-thumbnail" height="40px" width="50px">
+                    {{recipe.name}}
+                </h3>
+
+                <h5>
+                    <img src="./assets/chef.jpg" class="img-thumbnail" height="25px" width="25px"> {{recipe.chef}}
+                </h5>
                 <img class="img-fluid" src="{{recipe.image}}" class="img-thumbnail" height="100%" width="100%">
-                <div *ngIf="recipe.type === 'Veg' else elseBlock">
+                <div style="margin-top: 10px;" *ngIf="recipe.type === 'Veg' else elseBlock">
                     <img src="./assets/veg.png" height="25px" width="25px">
                     <label style="color: darkgreen;">
                         &nbsp;&nbsp;{{recipe.type}}
                     </label>
                 </div>
                 <ng-template #elseBlock>
-                    <div>
+                    <div style="margin-top: 10px;">
                         <img src="./assets/non-veg.png" height="30px" width="30px">
                         <label style="color: darkred;">
                             &nbsp;{{recipe.type}}
                         </label>
                     </div>
                 </ng-template>
-                <p style="padding-right: 0px; align-items: center;">
-                    <br>{{recipe.description}}
+                <hr>
+                <p>{{recipe.description}}
                 </p>
             </div>
         </div>
