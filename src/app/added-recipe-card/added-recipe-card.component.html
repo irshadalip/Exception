@@ -1,19 +1,35 @@
-<div class="container-fluid col-sm-9" style="margin-top: 25px;">
-    <div class="row d-flex justify-content-center col-sm-13 row">Í
-        <div class="cardDiv col-sm" style="background: cornflowerblue;">
-            <h5>
-                Name:
-            </h5>
-            <h6>
-                Discription:
-            </h6>
-            <img src="http://eatbook.sg/wp-content/uploads/2018/06/Century-Square-Food-Two-Hana.jpg"
-                class="img-thumbnail" alt="Cinque Terre">
-            <p align="justify" style="padding-right: 20px;">
-                <br>1. For baklava: In small bowl, combine toasted pistachios, cinnamon and sugar and toss to mix
-                evenly.
-            </p>
+<div class="container" style="margin-top: 25px;">
+    <div class="row">
+        <div class="col-sm-4" *ngFor="let recipe of recipes">
+            <div class="card caedDiv">
+                <h5>
+                    Name:{{recipe.name}}
+                </h5>
+
+                <h6>
+                    <i class="fa fa-user-secret" style="font-size:20px;color:rgb(175, 76, 76)"></i>
+                    Chef: {{recipe.chef}}
+                </h6>
+                <img class="img-fluid" src="{{recipe.image}}" class="img-thumbnail" height="100%" width="100%">
+                <div *ngIf="recipe.type === 'Veg' else elseBlock">
+                    <img src="./assets/veg.png" height="25px" width="25px">
+                    <label style="color: darkgreen;">
+                        {{recipe.type}}
+                    </label>
+                </div>
+                <ng-template #elseBlock>
+                    <div>
+                        <img src="./assets/non-veg.png" height="30px" width="30px">
+                        <label style="color: darkred;">
+                            {{recipe.type}}
+                        </label>
+                    </div>
+                </ng-template>
+                <p style="padding-right: 20px; align-items: center;">
+                    <br>1. For baklava: In small bowl, combine toasted pistachios, cinnamon and sugar and toss to mix
+                    evenly.
+                </p>
+            </div>
         </div>
-        
     </div>
 </div>

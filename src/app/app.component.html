@@ -8,61 +8,8 @@
 </head>
 
 <body>
-  <form>
-    <div class="headingDiv">
-      <h1>
-        Team Exception
-      </h1>
-    </div>
-
-    <div class="row d-flex justify-content-center">
-      <div class="formDiv">
-        <div class="row d-flex justify-content-center">
-          <div class="col-sm-10">
-            <label>Name</label>
-            <input type="text" class="form-control">
-            <span></span>
-          </div>
-          <div class="col-sm-10">
-            <label>Description</label>
-            <input type="text" class="form-control">
-            <span></span>
-          </div>
-          <div class="col-sm-10">
-            <label>ImageUrl</label>
-            <input type="text" class="form-control">
-            <span></span>
-          </div>
-          <div class="col-sm-10">
-            <label>Type (veg/non.veg)</label>
-            <input type="text" class="form-control">
-            <span></span>
-          </div>
-          <div class="col-sm-10 ">
-            <label>Chef / Author</label>
-            <input type="text" class="form-control">
-            <span></span>
-          </div>
-          <div class="col-sm-10">
-            <button type="submit">
-              Add Recipes
-            </button>
-          </div>
-          <!-- <div>
-                  <ul>
-                      <li *ngFor="let recipe of recipes">
-                        {{recipe.name}}
-                      </li>
-                    </ul>
-              </div> -->
-        </div>
-      </div>
-    </div>
-  </form>
+  <app-add-recipe-form> </app-add-recipe-form>
   <app-added-recipe-card> </app-added-recipe-card>
-  <app-added-recipe-card> </app-added-recipe-card>
-  <app-added-recipe-card> </app-added-recipe-card>
-  <app-added-recipe-card> </app-added-recipe-card>
-  </body>
+</body>
 
 </html>

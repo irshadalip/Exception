@@ -1,7 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 .form-control:focus {
-    border-color: #ff00ff;
-    box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+    border-color: #4CAF50;
+    // box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+    box-shadow: 0 0 0 0.1rem rgba(40, 167, 69, 0.25);
     
 } 
 
@@ -30,24 +31,16 @@ button[type=submit] {
 
   .headingDiv {
     border-radius: 10px;
-    background-color: #f2f2f2;
+    background-color: #4ef0719c;
     padding: 0px;
     text-align: center;
     color: rgb(255, 255, 255);
-    border-style: double;
-    border-color: lemonchiffon;
-    border-width: 5px;
     font-family: "Times New Roman", Times, serif;
   }
   .formDiv {
-    width: 60%;
+    width: 90%;
     border-radius: 10px;
     background-color: #f2f2f2;
-    padding: 0px;
-  }
-  .cardDiv {
-    border-radius: 10px;
-    background-color: #f2f2f2;
-    margin: 1px;
-    font-family: "Times New Roman", Times, serif;
+    color: rgb(124, 124, 124);
+    font-family:  Trebuchet MS, Helvetica, sans-serif;
   }
