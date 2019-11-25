@@ -13,22 +13,22 @@
         <div class="row d-flex justify-content-center ">
           <div class="col-sm-10">
             <label>Name :</label>
-            <input type="text" class="form-control txtFieldStyle">
+            <input type="text" class="form-control txtFieldStyle" #name>
             <span></span>
           </div>
           <div class="col-sm-10">
-            <label>Description :</label>
-            <input type="text" class="form-control txtFieldStyle">
+            <label>Chef / Author :</label>
+            <input type="text" class="form-control txtFieldStyle"#chef>
             <span></span>
           </div>
           <div class="col-sm-10">
             <label>ImageUrl :</label>
-            <input type="text" class="form-control txtFieldStyle">
+            <input type="text" class="form-control txtFieldStyle"#imageUrl>
             <span></span>
           </div>
           <div class="col-sm-10">
             <label>Type (veg/non.veg) :</label>
-            <select class="form-control txtFieldStyle">
+            <select class="form-control txtFieldStyle"#type>
               <option><label>Veg</label>
                 <input type="radio" value="veg">
               </option>
@@ -41,12 +41,12 @@
             <span></span>
           </div>
           <div class="col-sm-10 ">
-            <label>Chef / Author :</label>
-            <input type="text" class="form-control txtFieldStyle">
+            <label>Description :</label>
+            <input type="text" class="form-control txtFieldStyle"#description>
             <span></span>
           </div>
           <div class="col-sm-10">
-            <button type="submit">
+            <button type="button" (click)="onClickAddRecipe(name.value,chef.value,imageUrl.value,type.value,description.value)">
               Add Recipes
             </button>
           </div>

@@ -1,4 +1,4 @@
-<div class="container" style="margin-top: 25px;">
+<div class="container" style="margin-top: 25px;" *ngIf="recipes.length >= 0 else getZeroRecipe">
     <div class="row">
         <div class="col-sm-4" *ngFor="let recipe of recipes">
             <div class="card caedDiv">
@@ -25,7 +25,7 @@
                         </label>
                     </div>
                 </ng-template>
-                <p style="padding-right: 20px; align-items: center;">
+                <p style="padding-right: 0px; align-items: center;">
                     <br>1. For baklava: In small bowl, combine toasted pistachios, cinnamon and sugar and toss to mix
                     evenly.
                 </p>
@@ -33,3 +33,6 @@
         </div>
     </div>
 </div>
+<ng-template #getZeroRecipe>
+    <label>Hellloooooooo</label>
+</ng-template>

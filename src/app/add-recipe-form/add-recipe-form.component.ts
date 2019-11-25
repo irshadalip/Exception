@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { renderFlagCheckIfStmt } from '@angular/compiler/src/render3/view/template';
+// import { EventEmitter } from 'events';
 
 @Component({
   selector: 'app-add-recipe-form',
@@ -6,10 +8,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./add-recipe-form.component.scss']
 })
 export class AddRecipeFormComponent implements OnInit {
- 
-
+  @Input() recipes={
+    name: String,
+      chef: String,
+      image: String,
+      type: String
+  }
+  @Output() addRecipe = new EventEmitter<{name: String,chef: String,image: String,type: String}>();
   constructor() { }
 
   ngOnInit() {
+  }
+  onClickAddRecipe(name: String,chef: String,image: String,type: String){
+    this.addRecipe.emit({name: name,chef: chef,image: image,type: type});
   }
 }
