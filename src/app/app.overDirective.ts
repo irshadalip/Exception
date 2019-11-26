@@ -9,7 +9,8 @@ export class HighLightCard{
     @HostBinding('style.backgroundColor') backgroundColor: string;
     
     @HostListener('mouseover') onMouseOver() {
-        this.backgroundColor = '#C7FFCD';
+        this.backgroundColor = '#AB779D ';
+
     }    
 
     @HostListener('mouseout') onMouseOut() {

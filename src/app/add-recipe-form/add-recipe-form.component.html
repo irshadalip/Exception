@@ -1,50 +1,19 @@
-<div class="row d-flex justify-content-center">
-  <form class="col-sm-8 ">
-    <div class="headingDiv image" style="margin-bottom: 5px;">
-      <h1>
-        Add Recipes
-      </h1>
-    </div>
-    <div class="row d-flex justify-content-center">
-      <div class="formDiv">
-        <div class="row d-flex justify-content-center">
-          <div class="col-sm-10" style="margin-top:5px; font-size: large;">
-            <label><b>Recipe Name :</b></label>
-            <input type="text" class="form-control txtFieldStyle" #name>
-          </div>
-          <div class="col-sm-10" style=" font-size: large;">
-            <label><b>Chef / Author :</b></label>
-            <input type="text" class="form-control txtFieldStyle" #chef>
-          </div>
-          <div class="col-sm-10" text style=" font-size: large;">
-            <label><b>ImageUrl :</b></label>
-            <input type="text" class="form-control txtFieldStyle" #imageUrl>
-          </div>
-          <div class="col-sm-10" style="margin-bottom:8px;  font-size: large;">
-            <label><b>Type :</b></label>
-            <select class="form-control txtFieldStyle" #type>
-              <option><label>Veg</label>
-                <input type="radio" value="veg">
-              </option>
-              <option><label>Non-Veg</label>
-                <input type="radio" value="non-veg">
-              </option>
-              <div>
-              </div>
-            </select>
-          </div>
-          <div class="col-sm-10 " style=" font-size: large;">
-            <label><b>Description :</b></label>
-            <input type="text" class="form-control txtFieldStyle" #description>
-          </div>
-          <div class="col-sm-10 row d-flex justify-content-center" style=" font-size: large;">
-            <button type="button"
-              (click)="onClickAddRecipe(name.value,chef.value,imageUrl.value,type.value,description.value)">
-              Add Recipe
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
+<div class="phpkida-main">
+  <h2>Team Exception Recipes</h2>
+  <form>
+    <input type="text" class="ggg" name="name" placeholder="NAME" #name>
+    <input type="text" class="ggg" name="description" placeholder="Chef" #chef>
+    <input type="text" class="ggg" name="file" placeholder="Image URL" #imageUrl>
+    <select class="ggg" name="category" style="height: 50px; border-radius: 0%;" #type>
+      <option><label>&nbsp;&nbsp;Veg</label>
+        <input type="radio" value="veg">
+      </option>
+      <option><label>&nbsp;&nbsp;Non-Veg</label>
+        <input type="radio" value="non-veg">
+      </option>
+    </select>
+    <input type="text" class="ggg" name="chef" placeholder="Description"#description>
+    <div class="clearfix"></div>
+    <input type="button" value="submit" name="register" (click)="onClickAddRecipe(name.value,chef.value,imageUrl.value,type.value,description.value)">
   </form>
 </div>
