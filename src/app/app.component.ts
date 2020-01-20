@@ -1,6 +1,8 @@
 import { Component, Input} from '@angular/core';
 import { Button } from 'protractor';
 import { LogService } from './log.service';
+import { AuthService } from './auth.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -14,7 +16,7 @@ export class AppComponent {
   title = 'Team-Exception';
   recipes = [];
   
-  constructor(private logService: LogService) {
+  constructor(private logService: LogService, private authService: AuthService, private router : Router) {
     this.recipes = [
       {
         name: 'Burger',
@@ -53,5 +55,10 @@ export class AppComponent {
       description: value.description,
     });
     this.logService.log('new recipe added');
+  }
+  onClickLogout(){
+    this.authService.logout()
+    this.logService.log('Logout');
+    this.router.navigate(['/sign-in']);
   }
 }
