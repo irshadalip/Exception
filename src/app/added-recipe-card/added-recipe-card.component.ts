@@ -9,7 +9,7 @@ import { LogService } from '../log.service';
 })
 export class AddedRecipeCardComponent implements OnInit {
   
-  recipes;
+  @Input() recipes;
   constructor(private datamanagement: DataManagementService,private logService : LogService) {
     this.recipes = datamanagement.recipes;
   }

@@ -8,6 +8,7 @@ import { HighLightCard } from './app.overDirective';
 import { HomeComponent } from './home/home.component';
 import { DataManagementService } from './dataManagement.service'
 import { LogService } from './log.service'
+import { RouterModule, Routes } from '@angular/router';
 
 @NgModule({
   declarations: [

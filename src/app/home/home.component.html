@@ -1,41 +1,8 @@
-<div class="listofrecipe-main">
-        <div class="container " style="margin-top: 25px;">
-            <div class="row" style="vertical-align: middle;" *ngIf="recipes.length > 0 ;else getZeroRecipe">
-                <div class="col-sm-4" *ngFor="let recipe of recipes" style="margin-top: 15px;">
-                    <div class="card cardDiv" mouseOver style="padding: 15px;">
-    
-                        <h3>
-                            <!-- <img class="img-fluid" src="{{recipe.image}}" class="img-thumbnail" height="35px" width="45px"> -->
-                            🥗 {{recipe.name}}
-                        </h3>
-                        <!-- <img src="./assets/chef.jpg" class="img-thumbnail" height="30px" width="30px">  -->
-                        <h5>👨🏻‍🍳 {{recipe.chef}}</h5>
-                        <img class="img-fluid" src="{{recipe.image}}" class="img-thumbnail" height="100%" width="100%">
-                        <div style="margin-top: 10px;" *ngIf="recipe.type === '&nbsp;&nbsp;Veg' else elseBlock">
-                            <img src="./assets/veg.png" height="25px" width="25px">
-                            <label style="color: darkgreen;">
-                                {{recipe.type}}
-                            </label>
-                        </div>
-                        <ng-template #elseBlock>
-                            <div style="margin-top: 10px;">
-                                <img src="./assets/non-veg.png" height="30px" width="30px">
-                                <label style="color: darkred;">
-                                    {{recipe.type}}
-                                </label>
-                            </div>
-                        </ng-template>
-                        <div></div>
-                        <hr>
-                        <p>{{recipe.description}}
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <ng-template #getZeroRecipe>
-                <div class="row d-flex justify-content-center notFoundDiv" style="vertical-align: middle;">
-                    <img src="./assets/recipeNotFound.png" style="vertical-align: middle;" height="50%" width="50%">
-                </div>
-            </ng-template>
-        </div>
+<div class="listofrecipe-main ">
+    <input type="search" placeholder="search" class="ggg" id="search" #search (keyup)="onKey($event)">
+    <div class="input-group-append">
+        <button id="button-addon5" type="submit" class="btn btn-primary"
+            (click)="searchRecipe(search.value)">Search</button>
     </div>
+</div>
+<app-added-recipe-card [recipes]="recipes"> </app-added-recipe-card>
