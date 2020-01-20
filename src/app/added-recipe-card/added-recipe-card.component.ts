@@ -1,4 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { DataManagementService } from '../dataManagement.service';
+import { LogService } from '../log.service';
 
 @Component({
   selector: 'app-added-recipe-card',
@@ -6,8 +8,11 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./added-recipe-card.component.scss']
 })
 export class AddedRecipeCardComponent implements OnInit {
-  @Input() recipes = []
-  constructor() {}
+  
+  recipes;
+  constructor(private datamanagement: DataManagementService,private logService : LogService) {
+    this.recipes = datamanagement.recipes;
+  }
 
   ngOnInit() {
   }

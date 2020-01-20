@@ -5,10 +5,8 @@
                 <div class="card cardDiv" mouseOver style="padding: 15px;">
 
                     <h3>
-                        <!-- <img class="img-fluid" src="{{recipe.image}}" class="img-thumbnail" height="35px" width="45px"> -->
                         🥗 {{recipe.name}}
                     </h3>
-                    <!-- <img src="./assets/chef.jpg" class="img-thumbnail" height="30px" width="30px">  -->
                     <h5>👨🏻‍🍳 {{recipe.chef}}</h5>
                     <img class="img-fluid" src="{{recipe.image}}" class="img-thumbnail" height="100%" width="100%">
                     <div style="margin-top: 10px;" *ngIf="recipe.type === '&nbsp;&nbsp;Veg' else elseBlock">
@@ -25,6 +23,7 @@
                             </label>
                         </div>
                     </ng-template>
+                    <div></div>
                     <hr>
                     <p>{{recipe.description}}
                     </p>
