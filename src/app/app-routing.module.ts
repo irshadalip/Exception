@@ -7,17 +7,19 @@ import { HomeComponent } from './home/home.component';
 import { RecipesComponent } from './recipes/recipes.component';
 import { AddedRecipeCardComponent } from './added-recipe-card/added-recipe-card.component';
 import { RecipeResolver } from './recipes/recipe.resolver.service';
+import { RecipeDetailComponent } from './recipe-detail-card/recipe-detail.component';
 
 const appRoutes : Routes = [
   {path : 'add-recipe', component : AddRecipeFormComponent , canActivate : [AuthGuard]},
   {path : 'sign-in',  component: SignInFormComponent},
   {path : 'home', component: HomeComponent},
+  {path : '', component: HomeComponent  },
   {
-    path: 'recipes', component: RecipesComponent, canActivateChild: [AuthGuard], children: [
-      { path: ':id', component: AddedRecipeCardComponent, resolve: { recipe: RecipeResolver } }
+    path: 'recipes', component: RecipesComponent, children: [
+      { path: ':id', component: RecipeDetailComponent}
     ]
   },
-  { path: 'recipe/:id', component: AddedRecipeCardComponent },
+  
 ]
 
 

@@ -1,6 +1,5 @@
 <div class="listofrecipe-main">
-    <input type="search" placeholder="Type What are you looking for......." style="background-color: aliceblue;" class="ggg" id="search" #search (keyup)="onKey($event)">
-    <button  style="background-color: bisque; color: black; " type="submit" class="btn btn-primary"
-            (click)="searchRecipe(search.value)">Search</button>
+    <input type="search" placeholder="Type What are you looking for......." style="background-color: #FAE5D3; color: black;" class="ggg" id="search" #search (keyup)="onKey($event)">
+  
 </div>
 <app-added-recipe-card [recipes]="recipes"> </app-added-recipe-card>

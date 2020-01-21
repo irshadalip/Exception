@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { renderFlagCheckIfStmt } from '@angular/compiler/src/render3/view/template';
 import { DataManagementService } from '../dataManagement.service';
 import { LogService } from '../log.service';
+import { Router } from '@angular/router';
 // import { EventEmitter } from 'events';
 
 @Component({
@@ -10,11 +11,17 @@ import { LogService } from '../log.service';
   styleUrls: ['./add-recipe-form.component.scss']
 })
 export class AddRecipeFormComponent implements OnInit {
-  constructor(private datamanagement: DataManagementService,private logService : LogService) {
+  chef;
+  name;
+  type;
+  image;
+  description;
+  constructor(private datamanagement: DataManagementService,private logService : LogService, private route:Router) {
   }
   ngOnInit() {
   }
-  onClickAddRecipe(id:number,name: string, chef: string, image: string, type: string, description: string) {
-    this.datamanagement.addRecipe(id, name,chef,image,type,description);
+  onClickAddRecipe() {
+    this.datamanagement.addRecipe(this.name,this.chef,this.image,this.type,this.description);
+    this.route.navigate(['/recipes'])
   }
 }

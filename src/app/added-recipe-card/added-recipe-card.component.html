@@ -1,4 +1,5 @@
 <div class="listofrecipe-main">
+    <b><h4 style="text-align: center;">Favourites</h4></b>
     <div class="container " style="margin-top: 25px;">
         <div class="row" style="vertical-align: middle;" *ngIf="recipes.length > 0 ;else getZeroRecipe">
             <div class="col-sm-4" *ngFor="let recipe of recipes" style="margin-top: 15px;">
@@ -9,7 +10,7 @@
                     </h3>
                     <h5>👨🏻‍🍳 {{recipe.chef}}</h5>
                     <img class="img-fluid" src="{{recipe.image}}" class="img-thumbnail" height="100%" width="100%">
-                    <div style="margin-top: 10px;" *ngIf="recipe.type === '&nbsp;&nbsp;Veg' else elseBlock">
+                    <div style="margin-top: 10px;" *ngIf="recipe.type === 'Veg' else elseBlock">
                         <img src="./assets/veg.png" height="25px" width="25px">
                         <label style="color: darkgreen;">
                             {{recipe.type}}

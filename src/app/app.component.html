@@ -1,9 +1,9 @@
 
 <div class="tab" style="width: fit-content; margin-top: 50px;">
-    <button class="tablinks" routerLink="/sign-in" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">SignIn</button>
-    <button routerLink="/home" routerLinkActive="active">Favourites</button>
+    <!-- <button class="tablinks" routerLink="/sign-in" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">SignIn</button> -->
+    <button class="tablinks" routerLink="/home" routerLinkActive="active">Home</button>
     <button class="tablinks" routerLink="/add-recipe" routerLinkActive="active">Add New Recipe</button>
-    <button class="tablinks" routerLink="/recipes" routerLinkActive="active">Home</button>
-    <button class="tablinks" (click)="onClickLogout()">Logout</button>
+    <button class="tablinks" routerLink="/recipes" routerLinkActive="active">All Recipes</button>
+    <!-- <button class="tablinks" (click)="onClickLogout()">Logout</button> -->
   </div>
   <router-outlet></router-outlet>

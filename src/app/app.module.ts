@@ -16,6 +16,7 @@ import { AuthGuard } from './auth-guard.service';
 import { AppRoutingModule } from './app-routing.module';
 import { RecipesComponent } from './recipes/recipes.component';
 import { FavouriteHomeManagerService } from './favorite-home.manager.service';
+import { RecipeDetailComponent } from './recipe-detail-card/recipe-detail.component';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { FavouriteHomeManagerService } from './favorite-home.manager.service';
     HighLightCard,
     HomeComponent,
     SignInFormComponent,
+    RecipeDetailComponent,
     RecipesComponent,
     HighLightCard
   ],
