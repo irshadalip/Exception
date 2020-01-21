@@ -1,16 +1,8 @@
-<html>
-
-<head>
-  <title>
-    Team Exception Recipes
-  </title>
-
-</head>
-
-<body>
-
-  <app-add-recipe-form> </app-add-recipe-form>
-  <app-home> </app-home>
-</body>
-
-</html>
+<ul>
+    <li routerLink="/sign-in" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Sign In</li>
+  <a routerLink="/add-recipe" routerLinkActive="active">Add New Recipe</a>
+  <a routerLink="/home" routerLinkActive="active">home</a>
+  <input type="button" value="Logout" name="register" (click)="onClickLogout()">
+  <!-- <a routerLink="/sign-in" routerLinkActive="active">Sign in</a> -->
+</ul>
+<router-outlet></router-outlet>

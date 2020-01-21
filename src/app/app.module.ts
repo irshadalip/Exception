@@ -9,6 +9,12 @@ import { HomeComponent } from './home/home.component';
 import { DataManagementService } from './dataManagement.service'
 import { LogService } from './log.service'
 import { RouterModule, Routes } from '@angular/router';
+import { SignInFormComponent } from './sign-in-form/sign-in-form.component';
+import { FormsModule } from '@angular/forms';
+import { AuthService } from './auth.service';
+import { AuthGuard } from './auth-guard.service';
+import { AppRoutingModule } from './app-routing.module';
+
 
 @NgModule({
   declarations: [
@@ -16,12 +22,16 @@ import { RouterModule, Routes } from '@angular/router';
     AddedRecipeCardComponent,
     AddRecipeFormComponent,
     HighLightCard,
-    HomeComponent
+    HomeComponent,
+    SignInFormComponent,
+    HighLightCard
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule,
+    AppRoutingModule
   ],
-  providers: [LogService, DataManagementService],
+  providers: [LogService, DataManagementService, AuthGuard, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
