@@ -1,8 +1,9 @@
-<ul>
-    <li routerLink="/sign-in" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Sign In</li>
-  <a routerLink="/add-recipe" routerLinkActive="active">Add New Recipe</a>
-  <a routerLink="/home" routerLinkActive="active">home</a>
-  <input type="button" value="Logout" name="register" (click)="onClickLogout()">
-  <!-- <a routerLink="/sign-in" routerLinkActive="active">Sign in</a> -->
-</ul>
-<router-outlet></router-outlet>
+
+<div class="tab" style="width: fit-content; margin-top: 50px;">
+    <button class="tablinks" routerLink="/sign-in" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">SignIn</button>
+    <button routerLink="/home" routerLinkActive="active">Favourites</button>
+    <button class="tablinks" routerLink="/add-recipe" routerLinkActive="active">Add New Recipe</button>
+    <button class="tablinks" routerLink="/recipes" routerLinkActive="active">Home</button>
+    <button class="tablinks" (click)="onClickLogout()">Logout</button>
+  </div>
+  <router-outlet></router-outlet>

@@ -1,4 +1,4 @@
-export class DataManagementService {
+export class FavouriteHomeManagerService {
     recipes = [
         {
             id :1,
@@ -24,9 +24,16 @@ export class DataManagementService {
             type: 'Veg',
             description: "description"
         },
-
+        {
+            id :4,
+            name: 'Italian Pasta',
+            chef: 'JM',
+            image: 'https://mariettasquaremarket.com/msm/wp-content/uploads/2018/12/Pita-Mediterranean-5.jpg',
+            type: 'Veg',
+            description: "description"
+        },
     ];
-    addRecipe(id : number ,name: string, chef: string, image: string, type: string, description: string) {
+    addFavouriteRecipe(id : number ,name: string, chef: string, image: string, type: string, description: string) {
         if(this.recipes.length!=0){
             id=this.recipes.length+1;
             this.recipes.push({id, name, chef, image, type, description })
@@ -35,7 +42,7 @@ export class DataManagementService {
         }
         
     }
-    searchRecipe(keyword:string){
+    searchFavouriteRecipe(keyword:string){
         let searched = [];
         this.recipes.forEach((value,index) => {
             if (value.name.search(`([a-zA-z]*${keyword}[a-zA-z]*)+`) != -1) {
@@ -45,7 +52,7 @@ export class DataManagementService {
         return searched
     }
 
-    getRecipe(byId: number) {
+    getFavouriteRecipe(byId: number) {
         return this.recipes[byId];
       }
 

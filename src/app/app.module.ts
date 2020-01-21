@@ -14,6 +14,8 @@ import { FormsModule } from '@angular/forms';
 import { AuthService } from './auth.service';
 import { AuthGuard } from './auth-guard.service';
 import { AppRoutingModule } from './app-routing.module';
+import { RecipesComponent } from './recipes/recipes.component';
+import { FavouriteHomeManagerService } from './favorite-home.manager.service';
 
 
 @NgModule({
@@ -24,6 +26,7 @@ import { AppRoutingModule } from './app-routing.module';
     HighLightCard,
     HomeComponent,
     SignInFormComponent,
+    RecipesComponent,
     HighLightCard
   ],
   imports: [
@@ -31,7 +34,7 @@ import { AppRoutingModule } from './app-routing.module';
     FormsModule,
     AppRoutingModule
   ],
-  providers: [LogService, DataManagementService, AuthGuard, AuthService],
+  providers: [LogService, DataManagementService, AuthGuard, AuthService, FavouriteHomeManagerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

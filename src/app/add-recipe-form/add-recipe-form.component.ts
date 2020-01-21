@@ -14,7 +14,7 @@ export class AddRecipeFormComponent implements OnInit {
   }
   ngOnInit() {
   }
-  onClickAddRecipe(name: string, chef: string, image: string, type: string, description: string) {
-    this.datamanagement.addRecipe(name,chef,image,type,description);
+  onClickAddRecipe(id:number,name: string, chef: string, image: string, type: string, description: string) {
+    this.datamanagement.addRecipe(id, name,chef,image,type,description);
   }
 }

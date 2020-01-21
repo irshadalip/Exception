@@ -1,6 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { DataManagementService } from '../dataManagement.service';
 import { LogService } from '../log.service';
+import { Router, ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-added-recipe-card',
@@ -10,11 +12,11 @@ import { LogService } from '../log.service';
 export class AddedRecipeCardComponent implements OnInit {
   
   @Input() recipes;
-  constructor(private datamanagement: DataManagementService,private logService : LogService) {
-    this.recipes = datamanagement.recipes;
+  private paramSubs: Subscription;
+  constructor(private datamanagement: DataManagementService,private logService : LogService, private route : ActivatedRoute) {
   }
 
   ngOnInit() {
-  }
+}
 
 }
