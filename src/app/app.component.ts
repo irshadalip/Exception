@@ -1,7 +1,7 @@
-import { Component, Input} from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Button } from 'protractor';
-import { LogService } from './log.service';
-import { AuthService } from './auth.service';
+import { LogService } from './logservice/log.service';
+import { AuthService } from './authprovider/auth.service';
 import { Router } from '@angular/router';
 
 
@@ -9,18 +9,18 @@ import { Router } from '@angular/router';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  providers:[LogService]
+  providers: [LogService]
 })
 export class AppComponent {
   count = 0;
   title = 'Team-Exception';
   recipes = [];
-  
-  constructor(private logService: LogService, private authService : AuthService, private router: Router) {
-    
+
+  constructor(private logService: LogService, private authService: AuthService, private router: Router) {
+
   }
 
-  addRecipe(value:{name:string,chef:string,image:string,type:string,description:string}){
+  addRecipe(value: { name: string, chef: string, image: string, type: string, description: string }) {
     console.log("Hello")
     this.recipes.push({
       name: value.name,
@@ -31,7 +31,7 @@ export class AppComponent {
     });
     this.logService.log('new recipe added');
   }
-  onClickLogout(){
+  onClickLogout() {
     this.authService.logout()
     this.logService.log('Logout');
     this.router.navigate(['/sign-in']);

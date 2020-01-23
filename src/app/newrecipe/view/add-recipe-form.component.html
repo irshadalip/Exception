@@ -1,0 +1,20 @@
+<div class="mainBody">
+  <h2>Add New Recipe</h2>
+  <form>
+    <input type="text" class="ggg" name="name" placeholder="NAME" [(ngModel)]="name">
+    <input type="text" class="ggg" name="chef" placeholder="Chef" [(ngModel)]="chef">
+    <input type="text" class="ggg" name="image" placeholder="Image URL" [(ngModel)]="image">
+    <select class="ggg" name="type" style="height: 50px; border-radius: 0%;color: black; " [(ngModel)]="type">
+      <option><label>&nbsp;&nbsp;Veg</label>
+        <input type="radio" value="veg">
+      </option>
+      <option><label>&nbsp;&nbsp;Non-Veg</label>
+        <input type="radio" value="non-veg">
+      </option>
+    </select>
+    <input type="text" class="ggg" name="description" placeholder="Description" [(ngModel)]="description">
+    <div class="clearfix"></div>
+    <input type="button" value="submit" name="register" style="background-color: bisque; color: black; "
+      (click)="onClickAddRecipe()">
+  </form>
+</div>

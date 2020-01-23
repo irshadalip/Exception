@@ -5,13 +5,13 @@ import { Directive, HostListener, HostBinding } from "@angular/core";
     selector: '[mouseOver]',
 })
 
-export class HighLightCard{
+export class HighLightCard {
     @HostBinding('style.backgroundColor') backgroundColor: string;
-    
+
     @HostListener('mouseover') onMouseOver() {
         this.backgroundColor = '#AB779D ';
 
-    }    
+    }
 
     @HostListener('mouseout') onMouseOut() {
         this.backgroundColor = '';

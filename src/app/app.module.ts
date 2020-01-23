@@ -1,22 +1,20 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppComponent } from './app.component';
-import { AddedRecipeCardComponent } from './added-recipe-card/added-recipe-card.component';
-import { AddRecipeFormComponent } from './add-recipe-form/add-recipe-form.component';
+import { AddedRecipeCardComponent } from './allrecipe/addedrecipe/component/added-recipe-card.component';
+import { AddRecipeFormComponent } from './newrecipe/component/add-recipe-form.component';
 import { HighLightCard } from './app.overDirective';
-import { HomeComponent } from './home/home.component';
-import { DataManagementService } from './dataManagement.service'
-import { LogService } from './log.service'
-import { RouterModule, Routes } from '@angular/router';
-import { SignInFormComponent } from './sign-in-form/sign-in-form.component';
+import { HomeComponent } from './home/component/home.component';
+import { NewDataManagerService } from './allrecipe/addedrecipe/service/newdata-manager.service'
+import { LogService } from './logservice/log.service'
+import { SignInFormComponent } from './login/component/sign-in-form.component';
 import { FormsModule } from '@angular/forms';
-import { AuthService } from './auth.service';
-import { AuthGuard } from './auth-guard.service';
+import { AuthService } from './authprovider/auth.service';
+import { AuthGuard } from './authprovider/auth-guard.service';
 import { AppRoutingModule } from './app-routing.module';
-import { RecipesComponent } from './recipes/recipes.component';
-import { FavouriteHomeManagerService } from './favorite-home.manager.service';
-import { RecipeDetailComponent } from './recipe-detail-card/recipe-detail.component';
+import { RecipesComponent } from './allrecipe/recipes/component/recipes.component';
+import { FavouriteHomeManagerService } from './home/service/favourite-home.manager.service';
+import { RecipeDetailComponent } from './allrecipe/recipedetail/component/recipe-detail.component';
 
 
 @NgModule({
@@ -36,7 +34,7 @@ import { RecipeDetailComponent } from './recipe-detail-card/recipe-detail.compon
     FormsModule,
     AppRoutingModule
   ],
-  providers: [LogService, DataManagementService, AuthGuard, AuthService, FavouriteHomeManagerService],
+  providers: [LogService, NewDataManagerService, AuthGuard, AuthService, FavouriteHomeManagerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
