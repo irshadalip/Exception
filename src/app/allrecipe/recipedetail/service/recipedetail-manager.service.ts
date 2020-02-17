@@ -7,7 +7,7 @@ import { NewDataManagerService } from '../../addedrecipe/service/newdata-manager
 
 @Injectable()
 export class RecipeDetailManagerService {
-    recipe ;
+    recipe;
   constructor(private loggerService : LogService , private http : HttpClient, private homeManager  : FavouriteHomeManagerService, private newManager  : NewDataManagerService){
 
   }
@@ -21,8 +21,10 @@ export class RecipeDetailManagerService {
     {headers : headers}
     ).subscribe((response)=>{
        console.log("Recipe Detail "+response['name'])
-        this.recipe = response
+        this.recipe = response;
+       
     })
+    console.log("response innnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn",this.recipe);
     return this.recipe;
 }
 

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, NavigationExtras } from '@angular/router';
 import { LogService } from '../../../logservice/log.service';
 import { NewDataManagerService } from '../../addedrecipe/service/newdata-manager.service';
 import { Recipe } from 'src/app/home/model/Recipe';
@@ -11,7 +11,7 @@ import { Recipe } from 'src/app/home/model/Recipe';
 })
 export class RecipesComponent implements OnInit {
 
-  recipes : Recipe[];
+  recipes  = [];
   toggle = true;
   status = 'Enable';
   constructor(private logService: LogService, private route: Router, private newdataManagerService: NewDataManagerService) {

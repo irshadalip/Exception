@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { NewDataManagerService } from '../../addedrecipe/service/newdata-manager.service';
 import { LogService } from 'src/app/logservice/log.service';
 import { Recipe } from 'src/app/home/model/Recipe';
+import { Router, NavigationExtras } from '@angular/router'
 import { RecipeDetailManagerService } from '../service/recipedetail-manager.service';
 
 @Component({
@@ -13,7 +14,7 @@ import { RecipeDetailManagerService } from '../service/recipedetail-manager.serv
   styleUrls: ['../../recipedetail/view/recipe-detail.component.scss']
 })
 export class RecipeDetailComponent implements OnInit, OnDestroy {
-   recipe  : Recipe;
+  @Input() recipe;
   private paramSubs: Subscription;
 
   constructor(
@@ -27,7 +28,7 @@ export class RecipeDetailComponent implements OnInit, OnDestroy {
   ngOnInit() {
     
     const id = parseInt(this.route.snapshot.paramMap.get('id'));
-    
+    console.log('getting recipe id'+id)
     this.route.paramMap.subscribe(
       data => {
         console.log("RECIPE"+data.get('id'));
