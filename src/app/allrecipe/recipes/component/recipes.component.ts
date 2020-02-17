@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LogService } from '../../../logservice/log.service';
 import { NewDataManagerService } from '../../addedrecipe/service/newdata-manager.service';
+import { Recipe } from 'src/app/home/model/Recipe';
 
 @Component({
   selector: 'app-recipes',
@@ -10,13 +11,15 @@ import { NewDataManagerService } from '../../addedrecipe/service/newdata-manager
 })
 export class RecipesComponent implements OnInit {
 
-  recipes = [];
+  recipes : Recipe[];
   toggle = true;
   status = 'Enable';
-  constructor(private logService: LogService, private route: Router, private newdataManagerService: NewDataManagerService) { }
+  constructor(private logService: LogService, private route: Router, private newdataManagerService: NewDataManagerService) {
+    this.recipes = this.newdataManagerService.dataByApi();
+    console.log("recipes areeeeeeeeee",this.recipes);
+   }
 
   ngOnInit() {
-    this.recipes = this.newdataManagerService.recipes;
   }
   openRecipeDetail(id: number) {
     this.logService.log("recipe click " + id)

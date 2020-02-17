@@ -5,13 +5,14 @@
                 <div class="col">
                     <div class="col-md-8" *ngFor="let recipe of recipes">
                         <div class="card cardDiv" mouseOver style="padding: 15px;"
-                            (click)="openRecipeDetail(recipe.id)">
+                            (click)="openRecipeDetail(recipe.recipeId)">
 
                             <h3>
                                 🥗 {{recipe.name}}
                             </h3>
-                            <h5>👨🏻‍🍳 {{recipe.chef}}</h5>
-                            <div style="margin-top: 10px;" *ngIf="recipe.type === 'Veg' else elseBlock">
+                            <h5>👨🏻‍🍳 {{recipe.firstName}} {{recipe.lastName}}</h5>
+                            <img class="img-fluid" src="{{recipe.photo}}" class="img-thumbnail" height="100%" width="100%">
+                            <!-- <div style="margin-top: 10px;" *ngIf="recipe.type === 'Veg' else elseBlock">
                                 <img src="./assets/veg.png" height="25px" width="25px">
                                 <label style="color: darkgreen;">
                                     {{recipe.type}}
@@ -24,7 +25,7 @@
                                         {{recipe.type}}
                                     </label>
                                 </div>
-                            </ng-template>
+                            </ng-template> -->
 
 
                         </div>

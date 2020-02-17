@@ -3,6 +3,9 @@ import { Subscription } from 'rxjs';
 import { FavouriteHomeManagerService } from '../../../home/service/favourite-home.manager.service';
 import { ActivatedRoute } from '@angular/router';
 import { NewDataManagerService } from '../../addedrecipe/service/newdata-manager.service';
+import { LogService } from 'src/app/logservice/log.service';
+import { Recipe } from 'src/app/home/model/Recipe';
+import { RecipeDetailManagerService } from '../service/recipedetail-manager.service';
 
 @Component({
   selector: 'app-recipe-detail',
@@ -10,27 +13,30 @@ import { NewDataManagerService } from '../../addedrecipe/service/newdata-manager
   styleUrls: ['../../recipedetail/view/recipe-detail.component.scss']
 })
 export class RecipeDetailComponent implements OnInit, OnDestroy {
-  @Input() recipe;
+   recipe  : Recipe;
   private paramSubs: Subscription;
 
   constructor(
     private newdataManagerService: NewDataManagerService,
     private route: ActivatedRoute,
-    private favouriteHomeManagerService: FavouriteHomeManagerService
+    private favouriteHomeManagerService: FavouriteHomeManagerService,
+    private loggerService : LogService,
+    private recipeDetailManagerService : RecipeDetailManagerService
   ) { }
 
   ngOnInit() {
-
+    
     const id = parseInt(this.route.snapshot.paramMap.get('id'));
-
+    
     this.route.paramMap.subscribe(
       data => {
-        console.log(data.get('id'));
-        this.newdataManagerService.recipes.forEach(element => {
-          if (parseInt(data.get('id')) === element.id) {
-            this.recipe = element;
-          }
-        });
+        console.log("RECIPE"+data.get('id'));
+        this.recipe = this.recipeDetailManagerService.dataByApi(data.get('id'))
+        // this.newdataManagerService.recipes.forEach(element => {
+        //   if (parseInt(data.get('id')) === element.id) {
+        //     this.recipe = element;
+        //   }
+        // });
       }
     );
 
@@ -43,8 +49,8 @@ export class RecipeDetailComponent implements OnInit, OnDestroy {
       this.paramSubs.unsubscribe();
     }
   }
-  onClickFavourite(id: number, name: string, chef: string, image: string, type: string, description: string) {
-    this.favouriteHomeManagerService.addFavouriteRecipe(id, name, chef, image, type, description);
+  onClickFavourite(id: number) {
+   this.recipeDetailManagerService.addToCookingList(id)
   }
 
 }

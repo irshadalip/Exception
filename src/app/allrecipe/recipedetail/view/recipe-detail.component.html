@@ -1,6 +1,6 @@
 <div class="card mb-3" style="width: 18rem;" appHighLight>
   <div class="card-body">
-    <div style="margin-top: 10px;" *ngIf="recipe.type === 'Veg' else elseBlock">
+    <div style="margin-top: 10px;" *ngIf="recipe.complexity === 'Veg' else elseBlock">
       <img src="./assets/veg.png" height="25px" width="25px">
       <label style="color: darkgreen;"> </label>
     </div>
@@ -10,17 +10,16 @@
         <label style="color: darkred;">
         </label>
       </div>
-    </ng-template>
+    </ng-template> 
     <h5 class="card-title" style="margin-top: 10px;">🥗 {{recipe.name}}
-      <img class="img-fluid" style="margin-top: 10px;" src="{{recipe.image}}" class="img-thumbnail" height="100%"
+      <img class="img-fluid" style="margin-top: 10px;" src="{{recipe.photo}}" class="img-thumbnail" height="100%"
         width="100%">
     </h5>
 
-    <p>👨‍🍳 {{recipe.chef}}</p>
-    <p>{{recipe.description}}</p>
+    <p>👨‍🍳 {{recipe.firstName}} {{recipe.lastName}}</p>
 
     <input type="button" value="Favourite" name="signin" style="margin-top: 10px;"
-      (click)="onClickFavourite(recipe.id,recipe.name,recipe.chef,recipe.image,recipe.type,recipe.description)">
+      (click)="onClickFavourite(recipe.recipeId)">
   </div>
   <hr>
 </div>

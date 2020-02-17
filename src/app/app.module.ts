@@ -14,7 +14,9 @@ import { AuthGuard } from './authprovider/auth-guard.service';
 import { AppRoutingModule } from './app-routing.module';
 import { RecipesComponent } from './allrecipe/recipes/component/recipes.component';
 import { FavouriteHomeManagerService } from './home/service/favourite-home.manager.service';
+import { RecipeDetailManagerService} from './allrecipe/recipedetail/service/recipedetail-manager.service'
 import { RecipeDetailComponent } from './allrecipe/recipedetail/component/recipe-detail.component';
+import {HttpClientModule} from '@angular/common/http'
 
 
 @NgModule({
@@ -32,9 +34,10 @@ import { RecipeDetailComponent } from './allrecipe/recipedetail/component/recipe
   imports: [
     BrowserModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
-  providers: [LogService, NewDataManagerService, AuthGuard, AuthService, FavouriteHomeManagerService],
+  providers: [LogService, NewDataManagerService, AuthGuard, AuthService, FavouriteHomeManagerService, RecipeDetailManagerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

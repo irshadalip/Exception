@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FavouriteHomeManagerService } from '../service/favourite-home.manager.service';
+import { Recipe } from '../model/Recipe';
+
 
 @Component({
   selector: 'app-home',
@@ -8,10 +10,12 @@ import { FavouriteHomeManagerService } from '../service/favourite-home.manager.s
 })
 export class HomeComponent implements OnInit {
 
-  recipes;
+  recipes : Recipe[];
   result;
   constructor(private favouriteManagerService: FavouriteHomeManagerService) {
-    this.recipes = favouriteManagerService.recipes;
+    // this.recipes = favouriteManagerService.recipes;
+    this.recipes = this.favouriteManagerService.dataByApi();
+  
   }
 
   ngOnInit() {

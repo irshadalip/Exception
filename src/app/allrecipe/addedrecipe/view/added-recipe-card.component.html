@@ -10,26 +10,30 @@
                     <h3>
                         🥗 {{recipe.name}}
                     </h3>
-                    <h5>👨🏻‍🍳 {{recipe.chef}}</h5>
-                    <img class="img-fluid" src="{{recipe.image}}" class="img-thumbnail" height="100%" width="100%">
-                    <div style="margin-top: 10px;" *ngIf="recipe.type === 'Veg' else elseBlock">
+                    <h5>👨🏻‍🍳 {{recipe.firstName}} {{recipe.lastName}}</h5>
+                    <img class="img-fluid" src="{{recipe.photo}}" class="img-thumbnail" height="100%" width="100%">
+                    <!-- <div style="margin-top: 10px;" *ngIf="recipe.complexity === 'Complex' else elseBlock">
                         <img src="./assets/veg.png" height="25px" width="25px">
                         <label style="color: darkgreen;">
-                            {{recipe.type}}
+                            {{recipe.complexity}}
                         </label>
                     </div>
                     <ng-template #elseBlock>
                         <div style="margin-top: 10px;">
                             <img src="./assets/non-veg.png" height="30px" width="30px">
                             <label style="color: darkred;">
-                                {{recipe.type}}
+                                {{recipe.complexity}}
                             </label>
                         </div>
-                    </ng-template>
+                    </ng-template> -->
                     <div></div>
+                    <!-- <div id="outer">
+                        
+                        <div class="inner"> <h5>{{recipe.complexity}}</h5></div>
+                        <div class="inner"> <h5>{{recipe.serves}}</h5></div>
+                        <div class="inner"> <h5>{{recipe.preparationTime}}</h5></div>
+                      </div> -->
                     <hr>
-                    <p>{{recipe.description}}
-                    </p>
                 </div>
             </div>
         </div>
