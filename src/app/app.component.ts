@@ -32,6 +32,7 @@ export class AppComponent {
     this.logService.log('new recipe added');
   }
   onClickLogout() {
+    localStorage.removeItem('storeToken');
     this.authService.logout()
     this.logService.log('Logout');
     this.router.navigate(['/sign-in']);

@@ -1,20 +1,53 @@
 <div class="mainBody">
   <h2>Add New Recipe</h2>
-  <form>
-    <input type="text" class="ggg" name="name" placeholder="NAME" [(ngModel)]="name">
-    <input type="text" class="ggg" name="chef" placeholder="Chef" [(ngModel)]="chef">
-    <input type="text" class="ggg" name="image" placeholder="Image URL" [(ngModel)]="image">
-    <select class="ggg" name="type" style="height: 50px; border-radius: 0%;color: black; " [(ngModel)]="type">
-      <option><label>&nbsp;&nbsp;Veg</label>
-        <input type="radio" value="veg">
+  <form [formGroup]="recipeForm" (ngSubmit)="onClickAddRecipe()"  enctype="multipart/form-data">
+    <input type="text" class="ggg" name="recipeName" placeholder="Recipe Name" formControlName="recipeName" required>
+    <span class="text-muted" *ngIf="recipeForm.get('recipeName').touched && !recipeForm.get('recipeName').valid">Enter Recipe Name</span>
+    <input type="text" class="ggg" name="preprationTime" placeholder="Prepration Time" formControlName="preprationTime">
+    <input type="number" class="ggg" name="noOfServes" placeholder="No of Serves" formControlName="noOfServes" required>
+    <span class="text-muted" *ngIf="recipeForm.get('noOfServes').touched && !recipeForm.get('noOfServes').valid">Enter No Of Serves</span>
+    <select class="ggg" name="complexity" style="height: 50px; border-radius: 0%;color: black; "
+      formControlName="complexity" required>
+      <option selected="true"><label>&nbsp;&nbsp;Easy</label>
+        <input type="radio" value="Easy">
       </option>
-      <option><label>&nbsp;&nbsp;Non-Veg</label>
-        <input type="radio" value="non-veg">
+      <option><label>&nbsp;&nbsp;Medium</label>
+        <input type="radio" value="Medium">
+      </option>
+      <option><label>&nbsp;&nbsp;Complex</label>
+        <input type="radio" value="Complex">
       </option>
     </select>
-    <input type="text" class="ggg" name="description" placeholder="Description" [(ngModel)]="description">
+    <div formArrayName="metatags">
+      <input type="button" value="Add MetaTags" style="background-color: bisque; color: black; "
+        (click)="addMetaTags()">
+
+      <div *ngFor="let metatags of metatags.controls; let i=index">
+        <input class="ggg" type="text" [formControlName]="i">
+      </div>
+    </div>
+    <div formArrayName="ingredients">
+      <input type="button" value="Add Ingredients" style="background-color: bisque; color: black; "
+        (click)="addIngredients()">
+
+      <div *ngFor="let ingredients of ingredients.controls; let i=index">
+        <input  class="ggg" type="text" [formControlName]="i">
+      </div>
+    </div>
+    <div formArrayName="instructions">
+      <input type="button" value="Add Instructions" style="background-color: bisque; color: black; "
+        (click)="addInstructions()">
+
+      <div *ngFor="let instructions of instructions.controls; let i=index">
+        <input  class="ggg"type="text" [formControlName]="i">
+
+      </div>
+    </div>
+    <input type="text" class="ggg" name="youtubeURL" placeholder="YotubeURL link" formControlName="youtubeURL" required>
+    <input type="text" class="ggg" name="image" placeholder="Image URL" formControlName="photo">
+    <input type="file" (change)="onFileChanged($event)">
     <div class="clearfix"></div>
-    <input type="button" value="submit" name="register" style="background-color: bisque; color: black; "
-      (click)="onClickAddRecipe()">
+    <input type="button" value="submit" style="background-color: bisque; color: black; " (click)="onClickAddRecipe()">
   </form>
+
 </div>

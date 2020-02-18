@@ -18,6 +18,7 @@ import { RecipeDetailManagerService} from './allrecipe/recipedetail/service/reci
 import { RecipeDetailComponent } from './allrecipe/recipedetail/component/recipe-detail.component';
 import {HttpClientModule} from '@angular/common/http'
 import { htttpInterceptorProvider } from './http-interceptor';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { htttpInterceptorProvider } from './http-interceptor';
     BrowserModule,
     FormsModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [LogService, NewDataManagerService, AuthGuard, AuthService, FavouriteHomeManagerService, RecipeDetailManagerService,htttpInterceptorProvider],
   bootstrap: [AppComponent]

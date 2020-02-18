@@ -12,13 +12,14 @@ export class NewDataManagerService {
 
     recipes = [];
         
-    addRecipe(name: string, chef: string, image: string, type: string, description: string) {
+    addRecipe(recipeName: string, preprationTime: string, serves: string, complexity: string, metaTags: string[],youtubeUrl :string, ingredients : string[], instructions : string[]) {
         if (this.recipes.length != 0) {
             console.log("length" + this.recipes.length)
-            var id: number = this.recipes.length + 1;
-            this.recipes.push({ id, name, chef, image, type, description })
+            var recipeId: number = this.recipes.length + 1;
+            this.addRecipeToFeedList(recipeName, preprationTime,serves, complexity,metaTags , youtubeUrl)
+            //this.recipes.push({ recipeId, recipeName, , image, type, description })
         } else {
-            this.recipes.push({ id, name, chef, image, type, description })
+          //  this.recipes.push({ recipeId, name, chef, image, type, description })
         }
 
     }
@@ -34,6 +35,24 @@ export class NewDataManagerService {
 
     getRecipe(byId: number) {
         return this.recipes[byId];
+    }
+
+    addRecipeToFeedList(recipeName, preprationTime,serves, complexity,metaTags , youtubeUrl){
+        console.log("Enter into add recipe"+recipeName)
+        const body = {
+            'name' : recipeName,
+            'preprationTime' : preprationTime,
+            'serves' : serves,
+            'complexity' : complexity,
+            'metaTags' : metaTags,
+            'ytUrl' : youtubeUrl
+        }
+        this.http.post('http://35.160.197.175:3006/api/v1/recipe/add',
+            body
+        ).subscribe((response)=>{
+            console.log(response)
+            console.log('succcessfully servive')
+        })
     }
 
     dataByApi(){
