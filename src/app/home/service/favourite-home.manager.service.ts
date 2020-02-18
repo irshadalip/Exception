@@ -36,13 +36,8 @@ export class FavouriteHomeManagerService {
     }
 
     dataByApi(){
-        console.log("Enter API")
         let getRecipes = []
-        this.logger.log("API starts")
-        let headers: HttpHeaders = new HttpHeaders();
-        headers = headers.append('Authorization', 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mn0.MGBf-reNrHdQuwQzRDDNPMo5oWv4GlZKlDShFAAe16s');
         this.http.get('http://35.160.197.175:3006/api/v1/recipe/cooking-list',
-        {headers : headers}
         ).subscribe((response)=>{
            console.log("Recipe List "+response[0].name)
             for(var item in response){

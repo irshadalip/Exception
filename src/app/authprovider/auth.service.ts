@@ -13,18 +13,17 @@ export class AuthService {
     isAuthenticated() {
         return this.isLoggedIn;
     }
-    login() {
+    login(email ,password) {
         let body = {
-            email: 'jm1@example.com',
+            email: email,
             password: 'jay@123'
         }
-        let headers: HttpHeaders = new HttpHeaders();
-        headers = headers.append('Content-Type', 'application/json')
         this.http.post('http://35.160.197.175:3006/api/v1/user/login',
-        {body:body},
-        {headers : headers}
+        body,
         ).subscribe((response)=>{
-            console.log(response)
+            console.log(response['token'])
+            window.localStorage.setItem('storeToken',response['token']);
+            console.log(window.localStorage.getItem('storeToken'))
             this.isLoggedIn = true
         },(error) => {
             console.log(error);

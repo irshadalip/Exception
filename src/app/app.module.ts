@@ -17,6 +17,7 @@ import { FavouriteHomeManagerService } from './home/service/favourite-home.manag
 import { RecipeDetailManagerService} from './allrecipe/recipedetail/service/recipedetail-manager.service'
 import { RecipeDetailComponent } from './allrecipe/recipedetail/component/recipe-detail.component';
 import {HttpClientModule} from '@angular/common/http'
+import { htttpInterceptorProvider } from './http-interceptor';
 
 
 @NgModule({
@@ -37,7 +38,7 @@ import {HttpClientModule} from '@angular/common/http'
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [LogService, NewDataManagerService, AuthGuard, AuthService, FavouriteHomeManagerService, RecipeDetailManagerService],
+  providers: [LogService, NewDataManagerService, AuthGuard, AuthService, FavouriteHomeManagerService, RecipeDetailManagerService,htttpInterceptorProvider],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

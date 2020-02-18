@@ -7,6 +7,7 @@ import { LogService } from 'src/app/logservice/log.service';
 import { Recipe } from 'src/app/home/model/Recipe';
 import { Router, NavigationExtras } from '@angular/router'
 import { RecipeDetailManagerService } from '../service/recipedetail-manager.service';
+import { element } from 'protractor';
 
 @Component({
   selector: 'app-recipe-detail',
@@ -31,8 +32,14 @@ export class RecipeDetailComponent implements OnInit, OnDestroy {
     console.log('getting recipe id'+id)
     this.route.paramMap.subscribe(
       data => {
-        console.log("RECIPE"+data.get('id'));
+        const getRecipeId  = data.get('id')
+        console.log("RECIPE"+getRecipeId);
         this.recipe = this.recipeDetailManagerService.dataByApi(data.get('id'))
+        // this.newdataManagerService.dataByApi().forEach(element => {
+        //   if(parseInt(data.get('id')) === element.id){
+        //     this.recipe = element
+        //   }
+        // })
         // this.newdataManagerService.recipes.forEach(element => {
         //   if (parseInt(data.get('id')) === element.id) {
         //     this.recipe = element;

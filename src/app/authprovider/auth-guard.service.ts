@@ -11,7 +11,7 @@ export class AuthGuard implements CanActivate, CanActivateChild {
   async canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     const isAuthenticated = await this.authService.isAuthenticated();
     if (isAuthenticated) {
-      return true;
+     return true
     } else {
       this.router.navigate(['sign-in']);
       return false;
