@@ -12,14 +12,18 @@ export class SignInFormComponent implements OnInit {
 
     email: String = "";
     password: String = "";
+    response: void;
 
     constructor(private authService: AuthService, private logService: LogService, private router: Router) { }
 
     ngOnInit() {
     }
     onClickSignIn() {
-        this.authService.login(this.email ,this.password)
-        this.router.navigate(['/add-recipe'])
+        console.log("email and password ",this.email," ",this.password);
+    
+        this.response =  this.authService.login(this.email ,this.password);
+        console.log("response ",this.response);
+        // 
         this.logService.log("Sign in Successfull")
     }
 }
