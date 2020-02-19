@@ -5,29 +5,26 @@
     <div class="form-group">
       <input class="form-control" type="text" class="ggg" name="recipeName" placeholder="Recipe Name"
         formControlName="recipeName">
-      <span class="text-muted" *ngIf="recipeForm.get('recipeName').touched && !recipeForm.get('recipeName').valid">Enter
+      <span class="text-mutedd" *ngIf="recipeForm.get('recipeName').touched && !recipeForm.get('recipeName').valid">Enter
         Recipe Name</span>
     </div>
 
     <div class="form-group">
       <input class="form-control" type="number" class="ggg" name="noOfServes" placeholder="No of Serves"
         formControlName="noOfServes">
-      <span class="text-muted" *ngIf="recipeForm.get('noOfServes').touched && 
+      <span class="text-mutedd" *ngIf="recipeForm.get('noOfServes').touched && 
           !recipeForm.get('noOfServes').valid && !recipeForm.get('noOfServes').errors['validNoOfServes']">Enter No Of
         Serves</span>
-      <span class="text-muted" *ngIf="recipeForm.get('noOfServes').touched && 
-          !recipeForm.get('noOfServes').valid && recipeForm.get('noOfServes').errors['validNoOfServes']">Enter Valid
-        Data</span>
     </div>
 
     <div class="form-group">
       <input class="form-control" type="text" class="ggg" name="preprationTime" placeholder="Prepration Time"
         formControlName="preprationTime">
-      <span class="text-muted"
+      <span class="text-mutedd"
         *ngIf="recipeForm.get('preprationTime').touched && 
         !recipeForm.get('preprationTime').valid && !recipeForm.get('preprationTime').errors['validRecipePreprationTime']">Enter
         PreprationTime</span>
-      <span class="text-muted"
+      <span class="text-mutedd"
         *ngIf="recipeForm.get('preprationTime').touched && 
         !recipeForm.get('preprationTime').valid && recipeForm.get('preprationTime').errors['validRecipePreprationTime']">Enter Valid
         Prepration Time like '30 mins/hours/days'</span>
@@ -49,10 +46,10 @@
     <div class="form-group">
       <input class="form-control" type="text" class="ggg" name="youtubeURL" placeholder="YotubeURL link"
         formControlName="youtubeURL">
-      <span class="text-muted" *ngIf="recipeForm.get('youtubeURL').touched && 
+      <span class="text-mutedd" *ngIf="recipeForm.get('youtubeURL').touched && 
           !recipeForm.get('youtubeURL').valid && !recipeForm.get('youtubeURL').errors['validYouTubeUrl'] ">Enter
         Youtube URL</span>
-      <span class="text-muted" *ngIf="recipeForm.get('youtubeURL').touched && 
+      <span class="text-mutedd" *ngIf="recipeForm.get('youtubeURL').touched && 
           !recipeForm.get('youtubeURL').valid && recipeForm.get('youtubeURL').errors['validYouTubeUrl']">Enter Valid
         Youtube URL</span>
     </div>
@@ -65,7 +62,7 @@
 
       <div *ngFor="let control of recipeForm.get('metatags').controls; let i = index">
         <input class="form-control" class="ggg" type="text" placeholder="Add Meta Tag" [formControlName]="i">
-        <span class="text-muted"
+        <span class="text-mutedd"
           *ngIf="recipeForm.get('metatags').controls[i].touched && !recipeForm.get('metatags').controls[i].valid">Enter
           Tag</span>
       </div>
@@ -77,7 +74,7 @@
 
       <div *ngFor="let control of recipeForm.get('ingredients').controls; let i = index">
         <input class="form-control" class="ggg" type="text" placeholder="Add Ingredient" [formControlName]="i">
-        <span class="text-muted"
+        <span class="text-mutedd"
           *ngIf="recipeForm.get('ingredients').controls[i].touched && !recipeForm.get('ingredients').controls[i].valid">Enter
           Ingredient</span>
       </div>
@@ -90,7 +87,7 @@
 
       <div *ngFor="let control of recipeForm.get('instructions').controls; let i = index">
         <input class="form-control" class="ggg" type="text" placeholder="Add Instructions" [formControlName]="i">
-        <span class="text-muted"
+        <span class="text-mutedd"
           *ngIf="recipeForm.get('instructions').controls[i].touched && !recipeForm.get('instructions').controls[i].valid">Enter
           Instruction</span>
       </div>

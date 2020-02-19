@@ -35,7 +35,6 @@ export class AddRecipeFormComponent implements OnInit {
     });
   }
 
-
   get metatags() {
     return this.recipeForm.get('metatags') as FormArray;
   }
@@ -64,14 +63,14 @@ export class AddRecipeFormComponent implements OnInit {
   }
 
 
-
+  //To add Recipe Data
   onClickAddRecipe() {
     const recipeData = this.recipeForm.value
-    console.warn(recipeData);
     this.addRecipeToFeedList(recipeData.recipeName, recipeData.preprationTime, recipeData.noOfServes,
       recipeData.complexity, recipeData.metatags, recipeData.youtubeURL, recipeData.ingredients, recipeData.instructions)
   }
 
+  //To Call API for Adding Recipe Into Recipe List
   addRecipeToFeedList(recipeName, preprationTime, serves, complexity, metaTags, youtubeUrl, ingredients, instructions) {
     this.spinnerService.show();
     const body = {
@@ -92,6 +91,7 @@ export class AddRecipeFormComponent implements OnInit {
     })
   }
 
+  //To Call API for Adding Ingredients and Instructions in Recipe List
   addIngredientsAndInstructions(recipeId, ingredients, instructions) {
     for (var i in ingredients) {
       this.http.post('http://35.160.197.175:3006/api/v1/recipe/add-ingredient',
@@ -117,6 +117,7 @@ export class AddRecipeFormComponent implements OnInit {
 
   }
 
+  //To Call API for Uploag Image
   addRecipeImage(recipeId) {
     this.spinnerService.hide();
     const uploadData = new FormData();

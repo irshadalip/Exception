@@ -52,14 +52,17 @@ export class RecipeDetailComponent implements OnInit, OnDestroy {
     }
   }
   onClickFavourite() {
-   this.recipeDetailManagerService.addToCookingList(this.favouriteRecipeId).subscribe((response)=>{
-     console.log(response['msg']+""+this.favouriteRecipeId)
-      this.recipeDetailManagerService.updateRecipeList().subscribe((response)=>{
-        console.log("Update Feed list")
-        this.recipeDetailManagerService.updateFavouriteRecipeList().subscribe((response)=>{
-            console.log("Update Favourite List")
-        })
-      })
+   this.recipeDetailManagerService.addToCookingList(this.favouriteRecipeId).then((response)=>{
+      this.recipeDetailManagerService.updateRecipeList().then((response)=>{
+        this.recipeDetailManagerService.updateFavouriteRecipeList().then((response)=>{
+        }).catch((err : Error) => {
+            throw err;
+        });
+      }).catch((err : Error) => {
+        throw err;
+      });
+   }).catch((err : Error) => {
+     throw err;
    })
   }
 

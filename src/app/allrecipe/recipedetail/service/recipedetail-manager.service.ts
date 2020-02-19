@@ -18,25 +18,42 @@ export class RecipeDetailManagerService {
     }
 
     public addToCookingList(id) {
-        return this.http.post('http://35.160.197.175:3006/api/v1/recipe/add-to-cooking-list',
-            {
-                body: {
-                    'recipeId': id
-                }
-            },
-        )
+        const body = {
+            'recipeId' : id
+        };
+        return new Promise((resolve, reject) => {
+            this.http.post('http://35.160.197.175:3006/api/v1/recipe/add-to-cooking-list',
+           body     
+            ).subscribe(res => {
+                resolve(res);
+            }, err => {
+                reject(err.error);
+            });
+        });
+ 
 
     }
 
     public updateRecipeList() {
-        return this.http.get('http://35.160.197.175:3006/api/v1/recipe/feeds',
-        )
-    }
+        return new Promise((resolve, reject) => {
+                 this.http.get('http://35.160.197.175:3006/api/v1/recipe/feeds').subscribe(res => {
+                    resolve(res);
+                }, err => {
+                    reject(err.error);
+        });
+
+        })};
 
     public updateFavouriteRecipeList() {
-        return this.http.get('http://35.160.197.175:3006/api/v1/recipe/cooking-list',
-        )
-    }
+        return new Promise((resolve, reject) => {
+             this.http.get('http://35.160.197.175:3006/api/v1/recipe/cooking-list').subscribe(res => {
+                resolve(res);
+            }, err => {
+                reject(err.error);
+    });
+
+    });
+}
 
     public deleteRecipeFromFeed(id){
         return this.http.delete('http://35.160.197.175:3006/api/v1/recipe/'+id)
