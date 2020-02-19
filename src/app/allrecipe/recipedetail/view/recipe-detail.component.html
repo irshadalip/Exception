@@ -1,6 +1,6 @@
-<div class="card mb-3" style="width: 18rem;" appHighLight>
+<div class="card mb-3" style="width: 20rem;" appHighLight>
   <div class="card-body">
-    <div style="margin-top: 10px;" *ngIf="recipe.complexity === 'Veg' else elseBlock">
+    <div style="margin-top: 10px;" *ngIf="recipe?.complexity === 'Veg' else elseBlock">
       <img src="./assets/veg.png" height="25px" width="25px">
       <label style="color: darkgreen;"> </label>
     </div>
@@ -11,14 +11,28 @@
         </label>
       </div>
     </ng-template> 
-    <h5 class="card-title" style="margin-top: 10px;">🥗 {{recipe.name}}
-      <img class="img-fluid" style="margin-top: 10px;" src="{{recipe.photo}}" class="img-thumbnail" height="100%"
+    <h4 class="card-title" style="margin-top: 10px;font-weight: bold;">🥗 {{recipe?.name}}
+      <img class="img-fluid" style="margin-top: 10px;" src="{{recipe?.photo}}" class="img-thumbnail" height="100%"
         width="100%">
-    </h5>
-
-    <p>👨‍🍳 {{recipe.firstName}} {{recipe.lastName}}</p>
-
+    </h4>
+    <h5 style="font-weight: bold;">👨‍🍳 {{recipe?.firstName}} {{recipe?.lastName}}</h5>
+    <div>
+      <h5 class="card-title" style="margin-top: 10px;">Complexity : {{recipe?.complexity}}</h5>
+      <h5 class="card-title" style="margin-top: 10px;">Serves : {{recipe?.serves}}</h5>
+      <h5 class="card-title" style="margin-top: 10px;">Time : {{recipe?.preparationTime}}</h5>
+    </div>
+  
+    <h5 class="card-title" style="margin-top: 10px; font-weight: bold;">🥗 Ingredients</h5>
+    <li *ngFor="let ingredient of recipe?.ingredients ,let i =index"style=" list-style-type: none;">
+      <h6>{{ingredient['ingredient']}}</h6>
+    </li>
+    <h5 class="card-title" style="margin-top: 10px; font-weight:  bold;">🥗 Instructions</h5>
+    <li *ngFor="let instruction of recipe?.instructions  ,let i =index" style=" list-style-type: none;">
+      <h6> {{instruction['instruction']}}</h6>
+    </li>
     <input type="button" value="Favourite" name="signin" style="margin-top: 10px;"
-      (click)="onClickFavourite(recipe.recipeId)">
+      (click)="onClickFavourite()">
+      <input type="button" value="Delete" name="signin" style="margin-top: 10px; margin-left: 20px;"
+      (click)="onClickDelete()">
   <hr>
 </div>

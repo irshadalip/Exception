@@ -5,6 +5,7 @@ import { FormBuilder } from '@angular/forms';
 import { Validators } from '@angular/forms';
 import { FormArray } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 
 @Component({
   selector: 'app-add-recipe-form',
@@ -14,7 +15,7 @@ import { HttpClient } from '@angular/common/http';
 export class AddRecipeFormComponent implements OnInit {
   selectedFile: File
 
-  constructor(private newDataManagerService: NewDataManagerService, private route: Router, private formBuilder: FormBuilder, private http: HttpClient) {
+  constructor(private newDataManagerService: NewDataManagerService, private route: Router, private formBuilder: FormBuilder, private http: HttpClient, private spinnerService: Ng4LoadingSpinnerService) {
   }
 
   recipeForm = this.formBuilder.group({
@@ -77,6 +78,7 @@ export class AddRecipeFormComponent implements OnInit {
   }
 
   addRecipeToFeedList(recipeName, preprationTime, serves, complexity, metaTags, youtubeUrl, ingredients, instructions) {
+    this.spinnerService.show();//show the spinner
     const body = {
       'name': recipeName,
       'preparationTime': preprationTime,
@@ -121,7 +123,7 @@ export class AddRecipeFormComponent implements OnInit {
   }
 
   addRecipeImage(recipeId){
-
+    this.spinnerService.hide();//show the spinner
     const uploadData = new FormData();
     uploadData.append('photo', this.selectedFile);
     uploadData.append("recipeId", recipeId)

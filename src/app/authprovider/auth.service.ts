@@ -2,11 +2,12 @@ import { LogService } from '../logservice/log.service';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 
 @Injectable()
 export class AuthService {
 
-    constructor(private logService : LogService , private http : HttpClient,private router: Router){
+    constructor(private logService : LogService , private http : HttpClient,private router: Router, private spinnerService: Ng4LoadingSpinnerService,){
 
     }
 
@@ -17,6 +18,7 @@ export class AuthService {
         return this.isAuthToken
     }
     login(email ,password) {
+        this.spinnerService.show();//show the spinner
         let body = {
             email: email,
             password: password
@@ -28,6 +30,7 @@ export class AuthService {
             window.localStorage.setItem('storeToken',response['token']);
             console.log(window.localStorage.getItem('storeToken'));
             this.isAuthToken = true;
+            this.spinnerService.hide();//show the spinner
             this.router.navigate(['/add-recipe']);
             return response;
         },(error) => {

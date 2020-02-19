@@ -23,7 +23,7 @@
         (click)="addMetaTags()">
 
       <div *ngFor="let metatags of metatags.controls; let i=index">
-        <input class="ggg" type="text" [formControlName]="i">
+        <input class="ggg" type="text" placeholder="Add Meta Tag" [formControlName]="i">
       </div>
     </div>
     <div formArrayName="ingredients">
@@ -31,7 +31,7 @@
         (click)="addIngredients()">
 
       <div *ngFor="let ingredients of ingredients.controls; let i=index">
-        <input  class="ggg" type="text" [formControlName]="i">
+        <input  class="ggg" type="text" placeholder="Add Ingredient"  [formControlName]="i">
       </div>
     </div>
     <div formArrayName="instructions">
@@ -39,15 +39,14 @@
         (click)="addInstructions()">
 
       <div *ngFor="let instructions of instructions.controls; let i=index">
-        <input  class="ggg"type="text" [formControlName]="i">
+        <input  class="ggg"type="text" placeholder="Add Instructions" [formControlName]="i">
 
       </div>
     </div>
     <input type="text" class="ggg" name="youtubeURL" placeholder="YotubeURL link" formControlName="youtubeURL" required>
-    <input type="text" class="ggg" name="image" placeholder="Image URL" formControlName="photo">
-    <input type="file" (change)="onFileChanged($event)">
+    <input type="file" (change)="onFileChanged($event)" style="margin-top: 10px;">
     <div class="clearfix"></div>
     <input type="button" value="submit" style="background-color: bisque; color: black; " (click)="onClickAddRecipe()">
   </form>
-
+  <ng4-loading-spinner> </ng4-loading-spinner>
 </div>

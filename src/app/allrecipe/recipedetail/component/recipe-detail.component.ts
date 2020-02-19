@@ -17,6 +17,7 @@ import { element } from 'protractor';
 export class RecipeDetailComponent implements OnInit, OnDestroy {
   @Input() recipe;
   private paramSubs: Subscription;
+  favouriteRecipeId: string;
 
   constructor(
     private newdataManagerService: NewDataManagerService,
@@ -27,24 +28,17 @@ export class RecipeDetailComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
-    
-    const id = parseInt(this.route.snapshot.paramMap.get('id'));
+   const id = parseInt(this.route.snapshot.paramMap.get('id'));
     console.log('getting recipe id'+id)
     this.route.paramMap.subscribe(
       data => {
+        this.favouriteRecipeId = data.get('id')
         const getRecipeId  = data.get('id')
         console.log("RECIPE"+getRecipeId);
-        this.recipe = this.recipeDetailManagerService.dataByApi(data.get('id'))
-        // this.newdataManagerService.dataByApi().forEach(element => {
-        //   if(parseInt(data.get('id')) === element.id){
-        //     this.recipe = element
-        //   }
-        // })
-        // this.newdataManagerService.recipes.forEach(element => {
-        //   if (parseInt(data.get('id')) === element.id) {
-        //     this.recipe = element;
-        //   }
-        // });
+        this.recipeDetailManagerService.dataByApi(data.get('id')).subscribe((response)=>{
+            this.recipe = response
+        })
+        
       }
     );
 
@@ -57,8 +51,24 @@ export class RecipeDetailComponent implements OnInit, OnDestroy {
       this.paramSubs.unsubscribe();
     }
   }
-  onClickFavourite(id: number) {
-   this.recipeDetailManagerService.addToCookingList(id)
+  onClickFavourite() {
+   this.recipeDetailManagerService.addToCookingList(this.favouriteRecipeId).subscribe((response)=>{
+     console.log(response['msg']+""+this.favouriteRecipeId)
+      this.recipeDetailManagerService.updateRecipeList().subscribe((response)=>{
+        console.log("Update Feed list")
+        this.recipeDetailManagerService.updateFavouriteRecipeList().subscribe((response)=>{
+            console.log("Update Favourite List")
+        })
+      })
+   })
   }
 
+  onClickDelete(){
+    this.recipeDetailManagerService.deleteRecipeFromFeed(this.favouriteRecipeId).subscribe((response)=>{
+      console.log(response['msg'])
+    })
+  }
+
+  
+  
 }

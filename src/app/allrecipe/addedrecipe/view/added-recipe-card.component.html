@@ -1,46 +1,22 @@
-<div class="listofrecipe-main">
+<div class="listofrecipe-main" style="width: 80rem;">
     <b>
         <h4 style="text-align: center;">Favourites</h4>
     </b>
-    <div class="container " style="margin-top: 25px;">
+    <div class="container " style="margin-top: 25px; width: 80rem;">
         <div class="row" style="vertical-align: middle;" *ngIf="recipes.length > 0 ;else getZeroRecipe">
             <div class="col-sm-4" *ngFor="let recipe of recipes" style="margin-top: 15px;">
                 <div class="card cardDiv" mouseOver style="padding: 15px;">
-
-                    <h3>
+                    <h4>
                         🥗 {{recipe.name}}
-                    </h3>
-                    <h5>👨🏻‍🍳 {{recipe.firstName}} {{recipe.lastName}}</h5>
+                    </h4>
                     <img class="img-fluid" src="{{recipe.photo}}" class="img-thumbnail" height="100%" width="100%">
-                    <!-- <div style="margin-top: 10px;" *ngIf="recipe.complexity === 'Complex' else elseBlock">
-                        <img src="./assets/veg.png" height="25px" width="25px">
-                        <label style="color: darkgreen;">
-                            {{recipe.complexity}}
-                        </label>
-                    </div>
-                    <ng-template #elseBlock>
-                        <div style="margin-top: 10px;">
-                            <img src="./assets/non-veg.png" height="30px" width="30px">
-                            <label style="color: darkred;">
-                                {{recipe.complexity}}
-                            </label>
-                        </div>
-                    </ng-template> -->
-                    <div></div>
-                    <!-- <div id="outer">
-                        
-                        <div class="inner"> <h5>{{recipe.complexity}}</h5></div>
-                        <div class="inner"> <h5>{{recipe.serves}}</h5></div>
-                        <div class="inner"> <h5>{{recipe.preparationTime}}</h5></div>
-                      </div> -->
-                    <hr>
+                    <h5 style="margin-top:10px;">👨🏻‍🍳 {{recipe.firstName}} {{recipe.lastName}}</h5>
                 </div>
             </div>
         </div>
         <ng-template #getZeroRecipe>
-            <div class="row d-flex justify-content-center notFoundDiv" style="vertical-align: middle;">
-                <img src="./assets/recipeNotFound.png" style="vertical-align: middle;" height="50%" width="50%">
-            </div>
+            <ng4-loading-spinner> </ng4-loading-spinner>
         </ng-template>
     </div>
+    
 </div>

@@ -19,6 +19,7 @@ import { RecipeDetailComponent } from './allrecipe/recipedetail/component/recipe
 import {HttpClientModule} from '@angular/common/http'
 import { htttpInterceptorProvider } from './http-interceptor';
 import { ReactiveFormsModule } from '@angular/forms';
+import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
 
 
 @NgModule({
@@ -31,14 +32,15 @@ import { ReactiveFormsModule } from '@angular/forms';
     SignInFormComponent,
     RecipeDetailComponent,
     RecipesComponent,
-    HighLightCard
+    HighLightCard,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    Ng4LoadingSpinnerModule.forRoot()
   ],
   providers: [LogService, NewDataManagerService, AuthGuard, AuthService, FavouriteHomeManagerService, RecipeDetailManagerService,htttpInterceptorProvider],
   bootstrap: [AppComponent]

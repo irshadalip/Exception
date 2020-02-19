@@ -1,11 +1,12 @@
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { LogService } from 'src/app/logservice/log.service';
 import { Injectable } from '@angular/core';
+import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 
 @Injectable()
 export class NewDataManagerService {
 
-    constructor(private logger : LogService , private http : HttpClient){
+    constructor(private logger : LogService , private http : HttpClient ,private spinnerService: Ng4LoadingSpinnerService){
 
     }
 
@@ -55,7 +56,8 @@ export class NewDataManagerService {
         })
     }
 
-    dataByApi(){
+    public dataByApi(){
+        this.spinnerService.show();//show the spinner
         console.log("Enter API")
         let getRecipes = []
         this.logger.log("API starts")
@@ -64,8 +66,8 @@ export class NewDataManagerService {
            console.log("Recipe List "+response[0].name)
             for(var item in response){
               getRecipes.push(response[item]);
-              console.log("Recipe List "+response[item].name+ "Get Recipe"+getRecipes['name'])
             }
+            this.spinnerService.hide();//show the spinner
         })
         this.recipes =getRecipes
         return this.recipes;
