@@ -72,4 +72,8 @@ export class NewDataManagerService {
         this.recipes =getRecipes
         return this.recipes;
     }
+
+    public deleteRecipeFromFeed(id){
+        return this.http.delete('http://35.160.197.175:3006/api/v1/recipe/'+id)
+    }
 }

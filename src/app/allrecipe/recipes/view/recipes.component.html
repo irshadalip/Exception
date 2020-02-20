@@ -4,34 +4,27 @@
             <div *ngIf="recipes.length > 0;else noDataFound">
                 <div class="col">
                     <div class="col-md-8" *ngFor="let recipe of recipes">
-                        <div class="card cardDiv" mouseOver style="padding: 15px;"
-                            (click)="openRecipeDetail(recipe.recipeId)">
-
+                        <div class="card cardDiv" mouseOver style="position: relative; padding: 15px;"
+                            (click)="openRecipeDetail(recipe.recipeId)"
+                          >
+                            <div style="margin-top: 18px;" class="overlay" *ngIf="recipe?.inCookingList === 1 else elseBlock">
+                                <img src="./assets/like.png" height="30px" width="30px">
+                              </div>
+                              <ng-template #elseBlock>
+                                <div style="margin-top: 18px;" class ="overlay">
+                                  <img src="./assets/dislike.png" height="30px" width="30px">
+                                </div>
+                              </ng-template> 
                             <h3>
                                 🥗 {{recipe.name}}
                             </h3>
                             <h5>👨🏻‍🍳 {{recipe.firstName}} {{recipe.lastName}}</h5>
                             <img class="img-fluid" src="{{recipe.photo}}" class="img-thumbnail" height="100%" width="100%">
-                            <!-- <div style="margin-top: 10px;" *ngIf="recipe.type === 'Veg' else elseBlock">
-                                <img src="./assets/veg.png" height="25px" width="25px">
-                                <label style="color: darkgreen;">
-                                    {{recipe.type}}
-                                </label>
-                            </div>
-                            <ng-template #elseBlock>
-                                <div style="margin-top: 10px;">
-                                    <img src="./assets/non-veg.png" height="30px" width="30px">
-                                    <label style="color: darkred;">
-                                        {{recipe.type}}
-                                    </label>
-                                </div>
-                            </ng-template> -->
-
-
+                            <input class="btn btn-primary" type="button" value="Remove" name="signin"
+                            style="background-color: bisque; color: black; margin-top: 10px; border-color: bisque;"
+                            (click)="onClickDelete(recipe.recipeId)">
                         </div>
-
                     </div>
-
                 </div>
             </div>
             <ng-template #noDataFound>

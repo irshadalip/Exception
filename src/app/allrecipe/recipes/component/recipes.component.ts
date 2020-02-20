@@ -25,7 +25,11 @@ export class RecipesComponent implements OnInit {
     this.logService.log("recipe click " + id)
     this.route.navigate(['/recipes', id]);
   }
-
+  onClickDelete(id){
+    this.newdataManagerService.deleteRecipeFromFeed(id).subscribe((response)=>{
+      console.log(response['msg'])
+    })
+  }
 
 
 }

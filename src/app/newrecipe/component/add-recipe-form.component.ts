@@ -66,12 +66,14 @@ export class AddRecipeFormComponent implements OnInit {
   //To add Recipe Data
   onClickAddRecipe() {
     const recipeData = this.recipeForm.value
+    console.log(this.selectedFile)
+    
     this.addRecipeToFeedList(recipeData.recipeName, recipeData.preprationTime, recipeData.noOfServes,
-      recipeData.complexity, recipeData.metatags, recipeData.youtubeURL, recipeData.ingredients, recipeData.instructions)
+      recipeData.complexity, recipeData.metatags, recipeData.youtubeURL, recipeData.ingredients, recipeData.instructions, this.selectedFile)
   }
 
   //To Call API for Adding Recipe Into Recipe List
-  addRecipeToFeedList(recipeName, preprationTime, serves, complexity, metaTags, youtubeUrl, ingredients, instructions) {
+  addRecipeToFeedList(recipeName, preprationTime, serves, complexity, metaTags, youtubeUrl, ingredients, instructions , imageFile) {
     this.spinnerService.show();
     const body = {
       'name': recipeName,
@@ -87,12 +89,12 @@ export class AddRecipeFormComponent implements OnInit {
       console.log(response['id'])
       console.log('succcessfully servive')
       const getRecipeId = response['id']
-      this.addIngredientsAndInstructions(getRecipeId, ingredients, instructions)
+      this.addIngredientsAndInstructions(getRecipeId, ingredients, instructions, imageFile)
     })
   }
 
   //To Call API for Adding Ingredients and Instructions in Recipe List
-  addIngredientsAndInstructions(recipeId, ingredients, instructions) {
+  addIngredientsAndInstructions(recipeId, ingredients, instructions, imageFile) {
     for (var i in ingredients) {
       this.http.post('http://35.160.197.175:3006/api/v1/recipe/add-ingredient',
         { 'ingredient': ingredients[i], 'recipeId': recipeId }).subscribe((response) => {
@@ -107,7 +109,7 @@ export class AddRecipeFormComponent implements OnInit {
           console.log("Add Instructions Successfully")
         })
     }
-    this.addRecipeImage(recipeId)
+    this.addRecipeImage(recipeId, imageFile)
 
   }
 
@@ -118,10 +120,10 @@ export class AddRecipeFormComponent implements OnInit {
   }
 
   //To Call API for Uploag Image
-  addRecipeImage(recipeId) {
+  addRecipeImage(recipeId,imageFile) {
     this.spinnerService.hide();
     const uploadData = new FormData();
-    uploadData.append('photo', this.selectedFile);
+    uploadData.append('photo', imageFile);
     uploadData.append("recipeId", recipeId)
 
     this.http.post('http://35.160.197.175:3006/api/v1/recipe/add-update-recipe-photo',

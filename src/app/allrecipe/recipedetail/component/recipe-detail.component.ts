@@ -35,7 +35,7 @@ export class RecipeDetailComponent implements OnInit, OnDestroy {
         this.favouriteRecipeId = data.get('id')
         const getRecipeId  = data.get('id')
         console.log("RECIPE"+getRecipeId);
-        this.recipeDetailManagerService.dataByApi(data.get('id')).subscribe((response)=>{
+        this.recipeDetailManagerService.dataByApi(data.get('id')).then((response)=>{
             this.recipe = response
         })
         
@@ -55,6 +55,9 @@ export class RecipeDetailComponent implements OnInit, OnDestroy {
    this.recipeDetailManagerService.addToCookingList(this.favouriteRecipeId).then((response)=>{
       this.recipeDetailManagerService.updateRecipeList().then((response)=>{
         this.recipeDetailManagerService.updateFavouriteRecipeList().then((response)=>{
+          this.recipeDetailManagerService.dataByApi(this.favouriteRecipeId).then((response)=>{
+            this.newdataManagerService.dataByApi()
+        })
         }).catch((err : Error) => {
             throw err;
         });
@@ -63,14 +66,32 @@ export class RecipeDetailComponent implements OnInit, OnDestroy {
       });
    }).catch((err : Error) => {
      throw err;
-   })
+   }).catch((err : Error) => {
+    throw err;
+  })
   }
 
-  onClickDelete(){
-    this.recipeDetailManagerService.deleteRecipeFromFeed(this.favouriteRecipeId).subscribe((response)=>{
-      console.log(response['msg'])
-    })
+  onClickRemoveFromFavourite(){
+    this.recipeDetailManagerService.removeFromCookingList(this.favouriteRecipeId).then((response)=>{
+      this.recipeDetailManagerService.updateRecipeList().then((response)=>{
+        this.recipeDetailManagerService.updateFavouriteRecipeList().then((response)=>{
+          this.recipeDetailManagerService.dataByApi(this.favouriteRecipeId).then((response)=>{
+            this.newdataManagerService.dataByApi()
+        })
+        }).catch((err : Error) => {
+            throw err;
+        });
+      }).catch((err : Error) => {
+        throw err;
+      });
+   }).catch((err : Error) => {
+     throw err;
+   }).catch((err : Error) => {
+    throw err;
+  })
   }
+
+ 
 
   
   
